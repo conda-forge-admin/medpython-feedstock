@@ -18,6 +18,8 @@ build:
       then:
         - set "CMAKE_GENERATOR_TOOLSET=v143"
         - set "CXXFLAGS=%CXXFLAGS% /openmp:llvm"
+        - set "INCLUDE=%LIBRARY_INC%;%INCLUDE%"
+        - set "LIB=%LIBRARY_LIB%;%LIB%"
     - python -m pip install . --no-deps -vv
 
 requirements:
