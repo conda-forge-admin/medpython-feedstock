@@ -1,5 +1,7 @@
 context:
   version: "1.2.1"
+  xgb_version: "3.4.1"
+  lightgbm_version: "4.6.0"
 
 package:
   name: medpython
@@ -33,10 +35,10 @@ requirements:
     - pip
     - eigen
     - libboost-headers
-    - libxgboost ==2.0.3
+    - libxgboost ==${{ xgb_version }}
     - dmlc
     - nlohmann_json
-    - liblightgbm ==4.6.0
+    - liblightgbm ==${{ lightgbm_version }}
     - if: linux
       then: libgomp
       else: llvm-openmp
@@ -46,7 +48,7 @@ requirements:
     - plotly
     - numpy
     - medpython-etl
-    - libxgboost ==2.0.3
+    - libxgboost ==${{ xgb_version }}
 
 tests:
   - python:
