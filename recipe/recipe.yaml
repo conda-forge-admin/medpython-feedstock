@@ -36,7 +36,10 @@ requirements:
     - pip
     - eigen
     - libboost-headers
-    - libxgboost ==${{ xgb_version }}
+    # medpython uses XGBoost's C++ interfaces, which require a compatible C++ ABI.
+    # On Windows, build XGBoost from source with MSVC alongside medpython.
+    - if: not win
+      then: libxgboost ==${{ xgb_version }}
     - dmlc
     - nlohmann_json
     - liblightgbm ==${{ lightgbm_version }}
@@ -49,7 +52,8 @@ requirements:
     - plotly
     - numpy
     - medpython-etl
-    - libxgboost ==${{ xgb_version }}
+    - if: not win
+      then: libxgboost ==${{ xgb_version }}
 
 tests:
   - python:
